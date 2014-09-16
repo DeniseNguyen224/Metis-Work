@@ -1,12 +1,4 @@
-class Deck 
-	attr_reader :name
-	#def name
-	#	@name
-
-	def initialize(name)
-		@name = name
-	end 
-end 
+require "./deck"
 
 
 class FlashcardGame
@@ -16,15 +8,14 @@ class FlashcardGame
 	end
 
 	def play
-
 		loop do
 			list_out_deck
-			which_deck = ask_user_what_deck
-			if which_deck == ""
+			deck = ask_user_what_deck
+			if deck
+				puts "would play #{deck.name}"
+			else 
 				puts "exiting"
 				break
-			else 
-				puts "playing"
 			end
 		end
 	end
@@ -38,9 +29,13 @@ private
 
 	def ask_user_what_deck
 		print "What deck would you like (enter if exiting)>"
-		which_deck = gets.chomp 
-		puts which_deck
-		which_deck
+		requested_deck_name = gets.chomp 
+		# @deck.find {|deck| deck.name == requested_deck_name}
+		#Finds the deck and split it out
+		
+		deck = @decks.find do |deck|
+			deck.name == requested_deck_name
+		end
 	end
 end
 
