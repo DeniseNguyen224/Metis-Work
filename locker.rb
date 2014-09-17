@@ -7,17 +7,23 @@
 #and toggle the state of any locker that is a multiple of their number in line, 
 #what lockers are open at the end?
 
-class Locker
+#Make locker 1 loop thru all 100 students
+#if the locker 1 is divisible by the student number print open
 
+#do the above to all 100 lockers
+
+class Locker
+	Locker_range_array = (1..100).to_a
+	
 	def toggle
-		(1..100).each do |locker_number|
-			if locker_number % 100 == 0
-				puts "opened"
-		 	elsif locker_number % 99 == 0 
-		 		puts "open"
-			else
-				puts locker_number
-			end
+		Locker_range_array.each do |locker|
+			Locker_range_array.each do |student|
+					if locker % student == 0
+						puts "#{locker}. opened"	
+					elsif 
+						puts "#{locker}. closed"
+					end
+			end	
 		end
 	end
 
@@ -25,3 +31,8 @@ end
 
 locker = Locker.new
 locker.toggle
+
+
+
+
+
