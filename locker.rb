@@ -10,7 +10,7 @@
 class Locker
 	
 	def initialize 
-		@range_array = (1..100).to_a
+		@range = (1..100).to_a
 
 		@locker_condition =[]
 		100.times do
@@ -20,8 +20,8 @@ class Locker
 
 	
 	def toggle
-		@range_array.each do |student|
-			@range_array.each do |locker|
+		@range.each do |student|
+			@range.each do |locker|
 				if locker % student == 0
 					if @locker_condition[locker-1] == "opened"
 						@locker_condition[locker-1] = "closed"
