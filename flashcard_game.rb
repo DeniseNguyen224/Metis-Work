@@ -1,5 +1,5 @@
 require "./deck"
-
+require "./card"
 
 class FlashcardGame
 
@@ -13,6 +13,7 @@ class FlashcardGame
 			deck = ask_user_what_deck
 			if deck
 				puts "would play #{deck.name}"
+				deck.play
 			else 
 				puts "exiting"
 				break
@@ -33,15 +34,23 @@ private
 		# @deck.find {|deck| deck.name == requested_deck_name}
 		#Finds the deck and split it out
 		
-		deck = @decks.find do |deck|
-			deck.name == requested_deck_name
+		deck = @decks.find do |deck| 
+			deck.name == requested_deck_name 
 		end
 	end
 end
 
 decks = []
-decks << Deck.new("Spanish")
-decks << Deck.new("Japanese")
+
+spanish_cards = []
+spanish_cards << Card.new({front: "Gato", back: "Cat"})
+spanish_cards << Card.new(front: "Perro", back: "Dog")
+decks << Deck.new({name: "Spanish", cards: spanish_cards})
+
+japanese_cards = []
+japanese_cards << Card.new({front: "Neku", back: "Cat"})
+japanese_cards << Card.new({front: "Inu", back: "Dog"})
+decks << Deck.new({name: "Japanese", cards: japanese_cards})
 
 flashcard_game = FlashcardGame.new(decks)
 flashcard_game.play
