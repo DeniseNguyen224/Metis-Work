@@ -9,10 +9,3 @@ class Pair
 	attr_accessor :value 
 
 end
-
-pair = Pair.new("Denise",23)
-puts pair.key
-puts pair.value
-pair.value = 24
-#pair.value = (24)
-puts pair.value 
