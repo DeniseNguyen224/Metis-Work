@@ -7,13 +7,32 @@ class MyHash
 	end
 
 	def [](key)
-		found_pair = @pairs.find do |pair|
-			pair.key == key
+		#this method: if key, return value
+		#find pair with relevant key
+		found_pair = find_pair_with_key(key)
+			
+		if found_pair
+			found_pair.value
 		end
-		found_pair.value
+	end 
+
+	def []=(key, new_value)
+		#take advantage of attr_accessor
+		#write in a new value after finding key
+		found_pair = find_pair_with_key(key)
+		found_pair.value = new_value
 	end
 
+	def find_pair_with_key(key)
+		#the below is a block; a block is a mini method that has no name
+		@pairs.find do |pair|
+			pair.key == key
+		end
+	end 
 end
 
-myhash = MyHash.new 
-puts myhash["Gabe"]
+my_hash = MyHash.new 
+
+puts my_hash["Gabe"]
+my_hash["Gabe"] = "possible highlander?"
+puts my_hash["Gabe"]
