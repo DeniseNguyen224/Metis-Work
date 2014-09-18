@@ -1,4 +1,4 @@
-require ".deck"
+require "./deck"
 require "./card"
 
 
@@ -19,31 +19,27 @@ class DeckReader
 	private
 
 	def read_deck
-		name = @file.gets
+		name = get_line 
 		number_of_cards = get_line.to_i
 		cards = number_of_cards.times.map do
 			read_card
 		end
-		Deck.new({name:name,cards:cards})
+		Deck.new({name: name, cards: cards})
 	end
 
 	def read_card
-		front = @files.gets
-		back - @files.gets
-		Card.new({front:front, back:back}
+		front = get_line 
+		back = get_line
+		Card.new({front: front, back: back})
 	end
 
 	def get_line
-		@file_gets.chomp
+		@file.gets.chomp
 	end
-
-	#def list_items
-	#	@file.each_with_index do|line, index| 
-	#		puts "#{index + 1}: #{line}"
-	#	end
-	#end
  
 end
 
 deck_reader = DeckReader.new("decks.txt")
 decks = deck_reader.get_decks
+puts decks.length
+puts decks.inspect
