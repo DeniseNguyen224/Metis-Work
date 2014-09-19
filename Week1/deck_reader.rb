@@ -18,6 +18,10 @@ class DeckReader
 
 	private
 
+	def get_line
+		@file.gets.chomp
+	end
+
 	def read_deck
 		name = get_line 
 		number_of_cards = get_line.to_i
@@ -33,13 +37,10 @@ class DeckReader
 		Card.new({front: front, back: back})
 	end
 
-	def get_line
-		@file.gets.chomp
-	end
  
 end
 
-deck_reader = DeckReader.new("decks.txt")
-decks = deck_reader.get_decks
-puts decks.length
-puts decks.inspect
+#deck_reader = DeckReader.new("decks.txt")
+#decks = deck_reader.get_decks
+#puts decks.length
+#puts decks.inspect
