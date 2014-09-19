@@ -22,7 +22,6 @@ class MusicLibrary
 			@database[artist] = name
 		elsif 
 			@database[artist] << name
-			puts @database
 		end 
 
 	end
